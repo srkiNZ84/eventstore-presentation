@@ -1,0 +1,109 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>Event Store</title>
+
+		<link rel="stylesheet" href="css/reset.css">
+		<link rel="stylesheet" href="css/reveal.css">
+		<link rel="stylesheet" href="css/theme/black.css">
+
+		<!-- Theme used for syntax highlighting of code -->
+		<link rel="stylesheet" href="lib/css/monokai.css">
+
+		<!-- Printing and PDF exports -->
+		<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+				<section>
+          <img src="eventstore.png" />
+          <img src="images.jpg" />
+        </section>
+				<section>
+          <h3>Who am I?</h3>
+          <ul>
+            <li class="fragment">Srđan (Serge), a DevOps Engineer/SRE</li>
+            <li class="fragment">From an "operational" background, though I know how to code (badly)</li>
+            <li class="fragment">Interested in Infrastructure, Resiliency, automation etc...</li>
+            <li class="fragment">Doing this talk because I wanted to learn more about Event Driven Architecture and Event Sourcing</li>
+            <li class="fragment">Learning about "Event Store" seemed like a good way to do this</li>
+            <li class="fragment">WARNING: Take this talk with a grain of salt (not used in anger)</li>
+          </p>
+        </section>
+				<section>
+          <h3>What to expect from this talk?</h3>
+          <ul>
+            <li class="fragment">Learn what Event Store is</li>
+            <li class="fragment">Learn what Event Sourcing is and how it fits into Event Driven Architecture</li>
+            <li class="fragment">See a demonstration of the main features of Event Store</li>
+            <li class="fragment">Learn what things Event Store is not good at</li>
+            <li class="fragment">Be able to tell whether in which cases it might be a good fit or not</li>
+          </ul>
+        </section>
+				<section>
+          <h3>What is Event Store?</h3>
+          <p class="fragment">It is a Datastore. But an "event sourcing" one</p>
+          <p class="fragment">(Other Datastore types being Relational, Document based, Columnar, Key-Value etc...)</p>
+        </section>
+				<section>
+          <h3>What does that mean?</h3>
+          <p class="fragment">So, "event sourcing" is not storing a canonical version of an
+          object anywhere. Rather you just store a set of "events" which then make up an object.</p>
+        </section>
+				<section>
+          <h3>This is weird and confusing</h3>
+          <p class="fragment">Yes. It is. An example might help. Git is a good example of such a system (the final state is
+          arrived/gotten by just applying all of the "commits", i.e. "events" in order)<p>
+        </section>
+        <section>
+          <h3>Where does it fit into the picture?</h3>
+          <img src="eda_systems_venn.png" height="600" />
+        </section>
+        <section>
+          <h3>How is it different from other EDA concepts?</h3>
+          <p class="fragment">It differs from other concepts in EDA by eschewing "commands" rather the Event being the "command" and the
+          set of events making up an object</p>
+          <p class="fragment">Not: <br />
+            <code>Command -&gt; Object -&gt; Event</code>
+          </p>
+          <p class="fragment">but rather: <br />
+            <code>Object -&gt; Event -&gt; Changed Object</code>
+          </p>
+        </section>
+				<section>
+          <h3>Demo Time!</h3>
+          <img class="fragment" src="easytoinstall.webp" />
+        </section>
+				<section>Slide 2</section>
+				<section>Slide 2</section>
+			</div>
+		</div>
+
+		<script src="js/reveal.js"></script>
+
+		<script>
+			// More info about config & dependencies:
+			// - https://github.com/hakimel/reveal.js#configuration
+			// - https://github.com/hakimel/reveal.js#dependencies
+			Reveal.initialize({
+        history: true,
+				dependencies: [
+					{ src: 'plugin/markdown/marked.js' },
+					{ src: 'plugin/markdown/markdown.js' },
+					{ src: 'plugin/notes/notes.js', async: true },
+					{ src: 'plugin/highlight/highlight.js', async: true }
+				]
+			});
+		</script>
+	</body>
+</html>
